@@ -17,5 +17,8 @@ jobs:
         with:
           config: "p/default"
 
+      - name: Scan secrets with Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+
       - name: Pipeline test
-        run: echo "✅ SAST terminé avec succès"
+        run: echo "✅ SAST et Secrets scan terminés"
