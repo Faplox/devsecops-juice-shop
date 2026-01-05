@@ -5,12 +5,17 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  security:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Simple test
-        run: echo "Pipeline DevSecOps fonctionne ✅"
+      - name: Run Semgrep (SAST)
+        uses: returntocorp/semgrep-action@v1
+        with:
+          config: "p/default"
+
+      - name: Pipeline test
+        run: echo "✅ SAST terminé avec succès"
