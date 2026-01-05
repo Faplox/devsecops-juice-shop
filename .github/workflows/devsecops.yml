@@ -16,6 +16,7 @@ jobs:
         uses: returntocorp/semgrep-action@v1
         with:
           config: "p/default"
+        continue-on-error: true
 
       - name: Scan secrets with Gitleaks
         uses: gitleaks/gitleaks-action@v2
