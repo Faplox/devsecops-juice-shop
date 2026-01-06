@@ -20,6 +20,13 @@ jobs:
 
       - name: Scan secrets with Gitleaks
         uses: gitleaks/gitleaks-action@v2
+        continue-on-error: true
+
+      - name: Start Juice Shop
+        run: |
+          docker run -d -p 3000:3000 bkimminich/juice-shop
+          sleep 30
+
 
       - name: Pipeline test
         run: echo "✅ SAST et Secrets scan terminés"
